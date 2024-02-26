@@ -1,0 +1,28 @@
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+header {
+  display: flex;
+  width: 100%;
+}
+
+nav {
+  width: 60%;
+  margin: 0 auto;
+}
+
+main {
+  width: 100%;
+}
+
+#page-container {
+  width: 60%;
+  margin: 0 auto;
+}
