@@ -1,71 +1,54 @@
 <?php
 $header = "
-<link rel=\"stylesheet\" href=\"./css/matches.css\">
-";
-require "./base/top.php";
-?>
+<link rel=\" stylesheet\" href=\"/css/home.css\">
+<link rel=\" stylesheet\" href=\"/css/widget.css\">";
+require "./includes/top.php";
 
-<h1>Matches</h1>
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false) {
+  http_response_code(401);
+  echo json_encode(array("message" => "You must be logged in to access this."));
+  exit;
+}
 
-<?php
-// $result = $conn->query("SELECT
-//   (SELECT logo_url FROM teams WHERE name = away_team) AS away_team_logo,
-//   matches.*,
-//   teams.*,
-//   min_price
-//   DATE_FORMAT(date, '%a %D %b') as date_format
-//   FROM matches, teams, price_bands
-//   WHERE (SELECT * FROM teams WHERE name = home_team) AS home, home_team = name
-//   ORDER BY date ASC;
-// ");
-
-$result = $conn->query("SELECT
-  matches.*,
-  home.logo_url AS home_logo,
-  home.stadium AS stadium,
-  away.logo_url AS away_logo,
-  DATE_FORMAT(date, '%a %D %b') AS date_format,
-  (SELECT base_price FROM price_bands WHERE (home.size + away.size) BETWEEN min_size AND max_size) AS base_price
-  FROM matches
-  JOIN teams AS home ON matches.home_team = home.name
-  JOIN teams AS away ON matches.away_team = away.name
-  ORDER BY date ASC
+$username = $_SESSION["username"];
+$stmt = $conn->prepare("SELECT 
+  username,
+  email,
+  DATE_FORMAT(created_at, '%D %M %Y') AS date_format
+  FROM users
+  WHERE username = ?
 ");
-
-$matches = $result->fetch_all(MYSQLI_ASSOC);
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 ?>
 
-<table class="matches">
-  <tr>
-    <th>Home Team</th>
-    <th>Away Team</th>
-    <th>Kick Off</th>
-    <th>Stadium</th>
-    <th>Price</th>
-  </tr>
-  <?php foreach ($matches as $match): ?>
-    <tr>
-      <td>
-        <img src="<?php echo $match["home_logo"] ?>" />
-        <?php echo $match["home_team"]; ?>
-      </td>
-      <td>
-        <img src="<?php echo $match["away_logo"] ?>" />
-        <?php echo $match["away_team"]; ?>
-      </td>
-      <td>
-        <?php echo $match["date_format"]; ?>
-      </td>
-      <td>
-        <?php echo $match["stadium"]; ?>
-      </td>
-      <td>
-        £<?php echo $match["base_price"] . "-" . $match["base_price"] + 35 ?>
-      </td>
-    </tr>
-  <?php endforeach; ?>
-</table>
+<h1>Home</h1>
+<div class="widget-container">
+  <div class="aside">
+    <div class="widget user-info">
+      <h2>User Info</h2>
+      <span class="field">
+        <p>Username</p>
+        <h2><?php echo $user["username"] ?></h2>
+      </span>
+      <span class="field">
+        <p>Email</p>
+        <h2><?php echo $user["email"] ?></h2>
+      </span>
+      <span class="field">
+        <p>Member Since</p>
+        <h2><?php echo $user["date_format"] ?></h2>
+      </span>
+    </div>
+    <div class="widget favourite-teams">
+      <h2>Favourite Teams</h2>
+    </div>
+  </div>
+  <div class="widget main">
+    <h2>My Bookings</h2>
+  </div>
+</div>
 
-<?php
-require "./base/bottom.php";
-?>
+<?php require "./includes/bottom.php" ?>

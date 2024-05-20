@@ -1,0 +1,42 @@
+.matches {
+  text-align: left;
+  background-color: #fff;
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  border-spacing: 0.5rem;
+  border-collapse: collapse;
+}
+
+.matches th {
+  padding: 1rem 1rem;
+  font-weight: 700;
+}
+
+.matches td {
+  padding: 0.5rem 1rem;
+}
+
+.matches tr {
+  border-bottom: 1px #a7a7a7 solid;
+  transition: 0.25s background-color;
+  cursor: pointer;
+}
+
+.matches tr[header] {
+  cursor: auto;
+  transition: none;
+}
+
+.matches tr[header]:hover {
+  background-color: transparent;
+}
+
+.matches tr:hover {
+  background-color: #d6d4d4;
+}
+
+.matches img {
+  height: 50px;
+  vertical-align: middle;
+}

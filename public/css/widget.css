@@ -1,0 +1,51 @@
+main {
+  overflow-y: hidden;
+}
+
+h2 {
+  margin: 0;
+}
+
+.widget-container {
+  display: flex;
+  height: max-content;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.aside {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.widget {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.field {
+  display: inline;
+}
+
+.field p {
+  color: #4f4f4f;
+}
+
+.field h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.field > * {
+  margin: 0;
+}

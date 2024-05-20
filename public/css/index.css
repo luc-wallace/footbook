@@ -29,11 +29,6 @@ main {
   padding: 0 1rem;
 }
 
-a {
-  text-decoration: none;
-  color: #fff;
-}
-
 .subtext {
   color: #a7a7a7;
 }
@@ -76,6 +71,8 @@ header {
   font-size: 2rem;
   font-weight: 700;
   margin: 1rem auto;
+  color: #fff;
+  text-decoration: none;
 }
 
 .navlinks {
@@ -87,6 +84,8 @@ header {
 }
 
 .navlinks a {
+  text-decoration: none;
+  color: #fff;
   display: flex;
   align-items: center;
   height: 3rem;
@@ -117,4 +116,40 @@ nav {
 
 .fa-angle-down {
   margin: 0 0 0 auto;
+}
+
+input[type="text"],
+input[type="password"] {
+  outline: none;
+  background-color: #ededed;
+  border: #a7a7a7 2px solid;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  width: 30rem;
+}
+
+input[type="checkbox"] {
+  border: #a7a7a7 2px solid;
+  font-size: 2rem;
+  outline: none;
+  height: 1.1rem;
+  width: 1.1rem;
+  background-color: #ededed;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+button,
+input[type="submit"] {
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: #4f7090;
+  color: #fff;
+  border-radius: 0.35rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  width: max-content;
 }
