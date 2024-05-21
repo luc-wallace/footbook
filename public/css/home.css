@@ -10,6 +10,7 @@
   flex-direction: column;
   gap: 0.5rem;
   height: 340px;
+  min-width: 220px;
 }
 
 .team {

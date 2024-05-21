@@ -26,7 +26,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         echo "Invalid email or password";
       } else {
         $user = $result->fetch_assoc();
-        echo $user["password"];
         if (password_verify($password, $user["password"])) {
           session_start();
           $_SESSION["loggedin"] = true;
