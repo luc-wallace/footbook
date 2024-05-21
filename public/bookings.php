@@ -15,8 +15,8 @@ $seatType = $_POST["seatType"];
 $home = $_POST["homeTeam"];
 $away = $_POST["awayTeam"];
 
-$stmt = $conn->prepare("INSERT INTO bookings VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $home, $away, $row, $seatType, $firstName, $lastName);
+$stmt = $conn->prepare("INSERT INTO bookings VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $home, $away, $row, $_SESSION["username"], $seatType);
 if ($stmt->execute()) {
   http_response_code(201);
   echo json_encode(array("message" => "Success."));
@@ -24,4 +24,3 @@ if ($stmt->execute()) {
   http_response_code(500);
   echo json_encode(array("message" => "Something went wrong, please try again later."));
 }
-

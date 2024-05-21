@@ -34,13 +34,12 @@ require "./includes/base.php";
     <hr>
     <h3>Dashboard</h3>
     <ul class="navlinks">
-      <a href="/"><i class="fa-solid fa-house"></i>Home<i class="fa-solid fa-angle-down"></i></a>
+      <?php if (isset($_SESSION["username"])): ?>
+        <a href="/"><i class="fa-solid fa-calendar-check"></i></i>Bookings<i class="fa-solid fa-angle-down"></i></a>
+      <?php endif ?>
       <a href="/discover.php"><i class="fa-solid fa-compass"></i>Discover Matches<i
           class="fa-solid fa-angle-down"></i></a>
-      <?php if (isset($_SESSION["username"])): ?>
-        <a href="/history.php"><i class="fa-solid fa-clock-rotate-left"></i>Booking History<i
-            class="fa-solid fa-angle-down"></i></a>
-      <?php endif ?>
+
     </ul>
     <hr>
     <h3>My Account</h3>

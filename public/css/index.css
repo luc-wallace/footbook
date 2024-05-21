@@ -72,7 +72,6 @@ header {
   font-weight: 700;
   margin: 1rem auto;
   color: #fff;
-  text-decoration: none;
 }
 
 .navlinks {
@@ -83,8 +82,11 @@ header {
   flex-direction: column;
 }
 
-.navlinks a {
+a {
   text-decoration: none;
+}
+
+.navlinks a {
   color: #fff;
   display: flex;
   align-items: center;
@@ -102,7 +104,7 @@ header {
 }
 
 .navlinks a i {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 
 i {

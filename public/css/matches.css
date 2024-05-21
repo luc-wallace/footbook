@@ -101,7 +101,7 @@ button:hover {
 
 .button.selected {
   background-color: transparent;
-  color: #4f4f4f;
+  color: #595959;
   cursor: default;
   font-weight: 600;
 }
@@ -118,7 +118,6 @@ span {
 }
 
 a {
-  text-decoration: none;
   color: #2a3f54;
 }
 
@@ -163,5 +162,9 @@ a {
 }
 
 .match div p:nth-child(2) {
-  color: #4f4f4f;
+  color: #595959;
+}
+
+.main {
+  gap: 2rem;
 }

@@ -43,7 +43,6 @@ if (isset($home) && isset($away)) {
   $stmt->bind_param("ss", $home, $away);
   $stmt->execute();
   $result = $stmt->get_result();
-
   $matches = $result->fetch_all(MYSQLI_ASSOC);
   $takenRows = array();
   foreach ($matches as $row) {
